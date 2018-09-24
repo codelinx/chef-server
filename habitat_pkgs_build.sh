@@ -9,7 +9,7 @@ export ORIGIN=chefservertesting
 for dir in oc-id openresty-noroot nginx bookshelf chef-server-ctl oc_bifrost oc_erchef; do
   cd $CHEF_SERVER_SRC/$dir
   echo "[STATUS] building $dir"
-  build > /var/log/build-${dir}-$(date +%s).log
+  build > /var/log/habitat/build-${dir}-$(date +%s).log
   if [[ $dir =~ dbdpg|openresty-noroot ]]; then continue; fi
   echo "[STATUS] exporting $dir pkg to docker daemon"
   hab pkg export docker -i "$ORIGIN/{{pkg_name}}" \
